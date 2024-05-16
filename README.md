@@ -9,3 +9,4 @@ Currently, two official plugins are available:
 # chat-gpt-api
 # chat-gpt-api2
 # market-bapp-private
+# chat-gpt-api2
