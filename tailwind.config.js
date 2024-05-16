@@ -6,6 +6,9 @@ export default {
       animation: {
         "spin-slow": "spin 4s linear infinite",
       },
+      fontFamily: {
+        Cafe24Shiningstar: ["Cafe24Shiningstar"],
+      },
     },
   },
   plugins: [],

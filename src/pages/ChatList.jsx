@@ -14,7 +14,7 @@ const ChatList = () => {
 
   return (
     <div>
-      <ul className="mt-8 px-4 flex flex-col gap-4">
+      <ul className="mt-8 px-4 flex flex-col gap-4 ">
         {chatlist.map((v, i) => (
           <ChatlistCard key={i} question={v.question} answer={v.answer} />
         ))}
