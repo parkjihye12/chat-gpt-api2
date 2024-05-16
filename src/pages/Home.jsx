@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import ChatlistCard from "../components/ChatlistCard";
 
 const Home = () => {
   const [content, setContent] = useState("");
-  const [chatlist, setChatlist] = useState();
+  const [chatlist, setChatlist] = useState([]);
 
   const onSubmitChat = async (e) => {
     try {
@@ -31,10 +32,13 @@ const Home = () => {
         }
       );
 
-      setChatlist({
-        question: content,
-        answer: response.data.choices[0].message.content,
-      });
+      setChatlist([
+        {
+          question: content,
+          answer: response.data.choices[0].message.content,
+        },
+        ...chatlist,
+      ]);
     } catch (error) {
       console.error(error);
     }
@@ -48,13 +52,13 @@ const Home = () => {
     <div className="mt-8 flex flex-col items-center">
       <form className="flex" onSubmit={onSubmitChat}>
         <input
-          className="text-2xl p-2 focus:outline-none rounded-lg border-2 border-gray-200 focus:border-gray-400"
+          className="text-2xl p-2 focus:outline-none rounded-lg border-2 border-purple-200 focus:border-purple-400"
           type="text"
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
         <button
-          className="ml-4 flex items-center bg-gray-400 text-2xl px-4 py-[10px] rounded-full shadow-md shadow-gray-200 hover:bg-yellow-500"
+          className="ml-4 flex items-center bg-purple-400 text-2xl px-4 py-[10px] rounded-full shadow-md shadow-purple-200 hover:bg-purple-500"
           type="submit"
         >
           <FiSearch className="mr-2" />
@@ -62,14 +66,9 @@ const Home = () => {
         </button>
       </form>
       <ul className="mt-8 px-4 flex flex-col gap-4">
-        <li className="bg-pink-50 p-4 rounded-md text-lg shadow-md shadow-purple-50">
-          <div className="mb-2 font-semibold">Q. {chatlist?.question}</div>
-          <div>A. {chatlist?.answer}</div>
-        </li>
-        <li className="bg-gray-50 p-4 rounded-md text-lg shadow-md shadow-blue-50">
-          <div className="mb-2 font-semibold">Q. {chatlist?.question}</div>
-          <div>A. {chatlist?.answer}</div>
-        </li>
+        {chatlist.map((v, i) => (
+          <ChatlistCard key={i} question={v.question} answer={v.answer} />
+        ))}
       </ul>
     </div>
   );
