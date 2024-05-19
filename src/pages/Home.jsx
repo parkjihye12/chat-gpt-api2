@@ -74,7 +74,7 @@ const Home = () => {
           onChange={(e) => setContent(e.target.value)}
         />
         <button
-          className="font-Cafe24Shiningstar ml-4 flex items-center bg-pink-400 text-2xl px-4 py-[10px] rounded-md shadow-md shadow-pink-200 hover:bg-purple-500 hover:text-white "
+          className="font-Cafe24Shiningstar ml-4 flex items-center bg-slate-500 text-2xl px-4 py-[10px] rounded-md shadow-md shadow-slate-400 hover:bg-purple-500 hover:text-white "
           type="submit"
           disabled={isLoading}
         >
